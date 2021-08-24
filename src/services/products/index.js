@@ -1,4 +1,5 @@
 import { Router } from "express";
+import db from '../../db/connection.js'
 
 const productsRoutes = Router();
 
@@ -36,13 +37,14 @@ productsRoutes.put("/:product_id", async (req, res, next) => {
              brand='${brand}',
 			 image_url = '${image_url}',
              price='${price}',
-             category='${category},
+             category='${category}',
 			 updated_at = NOW()
-			 WHERE author_id=${product_id} RETURNING *;`
+			 WHERE product_id='${product_id}' RETURNING *;`
 		);
 		const [found, ...rest] = products.rows;
 		res.status(found ? 200 : 400).send(found);
 	} catch (error) {
+		console.log(error)
 		res.status(500).send(error);
 	}
 });
@@ -62,12 +64,14 @@ productsRoutes.delete("/:product_id", async (req, res, next) => {
 
 productsRoutes.post("/",  async (req, res, next) => {
 	try {
-		const { name, last_name, avatar } = req.body;
-		const author = await db.query(
-			`INSERT INTO products(name,description,brand,image_url,price,category) VALUES('${name}','${description}','${brand}''${image_url}','${price}','${category}') RETURNING *;`
+		const { name,description,brand,image_url,price,category } = req.body;
+		const product = await db.query(
+			`INSERT INTO products(name,description,brand,image_url,price,category) VALUES('${name}','${description}','${brand}','${image_url}','${price}','${category}') RETURNING *;`
 		);
+		console.log(product.rows)
 		res.send(product.rows[0]);
 	} catch (error) {
+		console.log(error)
 		res.status(500).send(error);
 	}
 });

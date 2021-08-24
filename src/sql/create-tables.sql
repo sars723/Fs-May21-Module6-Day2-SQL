@@ -5,8 +5,8 @@ CREATE TABLE
 			name VARCHAR(50) NOT NULL,
 			description VARCHAR (255) NOT NULL,
 			brand VARCHAR(50) NOT NULL,
-			image_url TEXT NOT NULL,
-			price INTEGER NOT NULL,
+			image_url VARCHAR(255) NOT NULL,
+			price VARCHAR NOT NULL,
 			category VARCHAR (50) NOT NULL,
 			created_at TIMESTAMPTZ DEFAULT NOW(),
 			updated_at TIMESTAMPTZ DEFAULT NOW()
@@ -23,3 +23,13 @@ CREATE TABLE
 			created_at TIMESTAMPTZ DEFAULT NOW(),
 			updated_at TIMESTAMPTZ DEFAULT NOW()
 	);
+
+/* {
+    "name":{{$randomFirstName}},
+    "description":{{$randomLoremSentences}},
+    "brand":{{$randomLoremWord}},
+    "image_url":{{$randomImageUrl}},
+    "price":{{$randomPrice}},
+    "category":{{$randomWord}}
+
+} */
