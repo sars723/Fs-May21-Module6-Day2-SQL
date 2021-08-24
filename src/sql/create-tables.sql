@@ -33,3 +33,12 @@ CREATE TABLE
     "category":{{$randomWord}}
 
 } */
+/* {
+    "name":"delsssssssssss",
+    "description":"laptohrtzrtp",
+    "brand":"dell",
+    "image_url":"laptoztrzp",
+    "price":700,
+    "category":"laptdfdhgdop"
+
+} */

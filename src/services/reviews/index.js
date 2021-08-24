@@ -1,5 +1,5 @@
 import { Router } from "express";
-
+import db from '../../db/connection.js'
 const reviewsRoutes = Router();
 
 reviewsRoutes.get("/", async (req, res, next) => {
@@ -61,8 +61,8 @@ reviewsRoutes.delete("/:review_id", async (req, res, next) => {
 reviewsRoutes.post("/",  async (req, res, next) => {
 	try {
 		const { name, comment, rate,product_id } = req.body;
-		const author = await db.query(
-			`INSERT INTO reviews(name,comment,rate) VALUES('${name}','${comment}','${rate}',,'${product_id}') RETURNING *;`
+		const review = await db.query(
+			`INSERT INTO reviews(name,comment,rate,product_id) VALUES('${name}','${comment}','${rate}','${product_id}') RETURNING *;`
 		);
 		res.send(review.rows[0]);
 	} catch (error) {
