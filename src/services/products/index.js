@@ -1,7 +1,18 @@
 import { Router } from "express";
 import db from '../../db/connection.js'
+import multer from "multer"
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import {extname} from "path"
 
 const productsRoutes = Router();
+
+const cloudinaryStorage = new CloudinaryStorage({
+	cloudinary,
+	 params: {
+		 folder: "files"
+	 }
+   })
 
 productsRoutes.get("/", async (req, res, next) => {
 	try {
@@ -75,5 +86,18 @@ productsRoutes.post("/",  async (req, res, next) => {
 		res.status(500).send(error);
 	}
 });
+
+productsRoutes.post('/:productId/upload',multer({ storage: cloudinaryStorage }).single("prodPic"), (req,res,next)=>{
+	
+	try {
+		console.log(req.file)
+		const fileName=`${req.params.productId}${extname(req.file.orignalname)}`
+	res.send("uploaded")
+	} catch (error) {
+		console.log(error)
+		res.status(500).send(error);
+	}
+
+})
 
 export default productsRoutes;
