@@ -1,0 +1,30 @@
+{
+  "name": "Fs-May21-Module6-Day2-SQL",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon -r dotenv/config src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sars723/Fs-May21-Module6-Day2-SQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sars723/Fs-May21-Module6-Day2-SQL/issues"
+  },
+  "homepage": "https://github.com/sars723/Fs-May21-Module6-Day2-SQL#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "fs-extra": "^10.0.0",
+    "nodemon": "^2.0.12",
+    "pg": "^8.7.1"
+  }
+}
