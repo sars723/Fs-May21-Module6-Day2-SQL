@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 
 import productsRoutes from "./services/products/index.js";
-/* import reviewsRoutes from "./services/reviews/index.js"; */
+import reviewsRoutes from "./services/reviews/index.js";
 
 import createDefaultTables from "./scripts/create-tables.js";
 
@@ -18,7 +18,7 @@ const { PORT } = process.env;
 
 app.use("/products", productsRoutes);
 
-/* app.use("/reviews", reviewsRoutes); */
+app.use("/reviews", reviewsRoutes);
 
 app.listen(PORT, async () => {
 	await createDefaultTables();
