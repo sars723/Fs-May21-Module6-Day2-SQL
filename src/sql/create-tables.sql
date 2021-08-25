@@ -5,7 +5,7 @@ CREATE TABLE
 			name VARCHAR(50) NOT NULL,
 			description VARCHAR (255) NOT NULL,
 			brand VARCHAR(50) NOT NULL,
-			image_url VARCHAR(255) NOT NULL,
+			image_url VARCHAR (255) NOT NULL,
 			price VARCHAR NOT NULL,
 			category VARCHAR (50) NOT NULL,
 			created_at TIMESTAMPTZ DEFAULT NOW(),
