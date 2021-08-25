@@ -2,7 +2,7 @@ import pg from "pg";
 
 const { Pool } = pg;
 
-console.log();
+console.log(process.env.NODE_ENV);
 
 const onHeroku = process.env.NODE_ENV === "production";
 /* const sslConfig = onHeroku
